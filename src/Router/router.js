@@ -1,5 +1,5 @@
 import Home from '../components/pages/Home';
-import Login from '../components/private/Login';
+import Login from '../components/pages/Login';
 
 
 const routes = [

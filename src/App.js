@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router,Route,route, Switch} from "react-router-dom";
+import { BrowserRouter as Router,Route, Switch} from "react-router-dom";
 import routes from './Router/router';
 
 // url: https://gateway.marvel.com:443/v1/public/characters?apikey=6da83076eb9a1ff375d6a8028ff4c981
