@@ -1,16 +1,42 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useHistory } from "react-router";
 import "../../Styles/Styles.css";
 import image from "../../images/batman.png";
 
 function Login() {
   const [success, SetSuccess] = useState(false);
+  const [Error, SetError] = useState(null);
+  const history = useHistory();
 
-  const Response = (values) => {
+  const ValidationToken = async (values) => {
 
+    const response = await axios.post('http://challenge-react.alkemy.org/', values)
+    .catch((err) => {
+        if (err && err.response) 
+         /* const ValueError = err.response.data */
 
-    console.log(values);
+            SetError('Invalid credentials', err.response.data.error)
+            SetSuccess(false);
+            setTimeout(() => {
+                SetSuccess(false);
+              }, 5000);
+           
+        
+
+     console.log(Error);
+    });
+
+    if (response && response.data) {
+        const token = response.data
+        localStorage.setItem('user', JSON.stringify(token))
+        SetSuccess(true)
+        setTimeout(() => {
+            SetSuccess(false);
+          }, 5000);
+        history.push('/')
+    }
   };
 
   return (
@@ -50,11 +76,8 @@ function Login() {
               }}
               onSubmit={(values, { resetForm }) => {
                 resetForm();
-                Response(values);
-                SetSuccess(true);
-                setTimeout(() => {
-                  SetSuccess(false);
-                }, 5000);
+                ValidationToken(values);
+                
               }}
             >
               {({ errors }) => (
@@ -92,7 +115,7 @@ function Login() {
                     )}
                   />
                   <div className="form-group">
-                    <button className="btn btn-primary form-control mt-4">
+                    <button className="btn btn-primary form-control mt-4" type="botton">
                       Send
                     </button>
                   </div>
@@ -101,7 +124,9 @@ function Login() {
                       sent form successfully
                     </p>
                   ) : (
-                    ""
+                    <p className="badge bg-danger mt-2 p-2">
+                      Invalid Credentials
+                    </p>
                   )}
                 </Form>
               )}

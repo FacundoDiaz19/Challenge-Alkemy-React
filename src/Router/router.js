@@ -1,16 +1,22 @@
 import Home from '../components/pages/Home';
 import Login from '../components/pages/Login';
+import SearchTeam from '../components/pages/SearchTeam';
 
 
 const routes = [
     {
-        path: "/home",
+        path: "/",
         component: Home,
         exact: true,
     },
     {
-        path: "/",
+        path: "/login",
         component: Login,
+        exact: true,
+    },
+    {
+        path: "/MakeTeam",
+        component: SearchTeam,
         exact: true,
     }
 ];
