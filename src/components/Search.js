@@ -16,7 +16,7 @@ function Search() {
         try{
             const response = await axios.get(`https://superheroapi.com/api/${AccessToken}/search/${buscador}`)
             setResults(response.data.results)
-            /* return console.log(response.data.results) */
+           /*  return console.log(response.data.results) */
             
         }
         catch(err){
@@ -24,7 +24,7 @@ function Search() {
             console.log(error.error)
         }
     }
-   /*  console.log(Results) */
+    /* console.log(Results) */
   return (
     <div className="Container">
       <div class="mb-3 form-floating">
