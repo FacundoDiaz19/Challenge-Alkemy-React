@@ -1,6 +1,8 @@
 .font-h1{
-    /* font-family: 'Marvel', sans-serif; */
     font-family: 'Permanent Marker', cursive;
+}
+.font-h2{
+    font-family: 'Comic Neue', cursive;
 }
 .bg-login{
     background-color: #F5F6F8;

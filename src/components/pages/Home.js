@@ -4,6 +4,8 @@ import Auth from "../Auth/Auth";
 import NavBar from "../NavBar";
 import Team from "../Team";
 
+
+
 function Home() {
   const [Resultado, setResultado] = useState([]);
   //api de alkemy
@@ -14,7 +16,6 @@ function Home() {
 
     axios.get(Url).then((res) => {
       const respuesta2 = res.data;
-      console.log(respuesta2);
       setResultado([respuesta2]);
     });
 
@@ -38,8 +39,8 @@ function Home() {
         You don't have any character in the team <a href="#" class="alert-link">Create a new Team</a>.
         </div>
       </div>
-     
     </div>
+        <Team/>
     </Auth>
   );
 }
