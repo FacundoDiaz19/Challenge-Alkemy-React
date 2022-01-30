@@ -2,16 +2,23 @@ import React, { useState, useEffect }  from 'react';
 import { Link } from 'react-router-dom';
 
 
-
 function Team({HeroTeam}) {
-    const [TeamHeros, setTeamHeros] = useState()
+    const [TeamHeros, setTeamHeros] = useState([])
+    const [PowerHero, setPowerHero] = useState([])
+    const [ShowAlert, setShowAlert] = useState(false)
+
     
     useEffect(()=>{
+        if (TeamHeros.length === 0) {
+            setShowAlert(true)
+        }
             const Team = localStorage.getItem('team')
             if (Team) {
                 let TeamJson = JSON.parse(Team)
                 setTeamHeros([...TeamJson])
-
+                console.log(TeamJson)
+               /*  setPowerHero([...TeamJson.powerstats]) */
+                setShowAlert(false)
             }
     },[])
     
@@ -24,6 +31,11 @@ function Team({HeroTeam}) {
 
     return (
         <div className='container shadow-lg p-3 mb-5 bg-login rounded'>
+            {ShowAlert ? (
+                <div class="alert alert-warning" role="alert">
+                You don't have any character in the team <Link to={'/MakeTeam'} className='alert-link'>Create a new Team</Link>.
+                </div>
+            ): null}
             <div className="row row-cols-1 row-cols-sm-2 g-3">
             {TeamHeros ? TeamHeros.map( (hero) => (
                     <div className="col">

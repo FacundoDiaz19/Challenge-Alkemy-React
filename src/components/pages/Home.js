@@ -35,12 +35,9 @@ function Home() {
     <NavBar />  
     <div className="container">
       <div className="d-md-flex justify-content-center mt-1">
-        <div class="alert alert-warning" role="alert">
-        You don't have any character in the team <a href="#" class="alert-link">Create a new Team</a>.
-        </div>
+        <Team/>   
       </div>
     </div>
-        <Team/>
     </Auth>
   );
 }

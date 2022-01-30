@@ -44,8 +44,8 @@ function HeroCards( {Heros} ) {
               ))
                : null}
             </div>
-                <div className="row row-cols-1 row-cols-sm-2 g-3 mt-4">
-                {Addheros.length > 0 ? <h2 className='font-h2 text-center fs-2'>Este es tu Equipo</h2> : null }
+                {Addheros.length > 0 ? <h2 className=' font-h2 text-center fs-2'>Este es tu Equipo</h2> : null }
+                <div className="row row-cols-1 row-cols-sm-2 g-3 mt-4 mb-4">
                 {Addheros.length > 0 ? Addheros.map( (hero) => (
                     <div  className="col">
                         <div key={hero.id} className="card">
@@ -61,14 +61,14 @@ function HeroCards( {Heros} ) {
                                 <p><strong>Strength</strong>: {hero.powerstats.strength}</p>
                             </div>
                         </div>
-                        <div className="col-md-7 gx-1 text-center">
+                        <div className="col-md-7 w-100 text-center">
                             <button className='btn btn-secondary' onClick={() => DeleteHeroTeam(hero.id)}>Delete the Team</button>
                         </div>
                         </div>
                     </div>
             )) : null}
             </div>
-            {Addheros.length > 0 ? <button className='btn btn-primary' onClick={saveTeam}>Save your Team</button> : null }
+            {Addheros.length > 0 ? <button className='btn btn-primary w-100' onClick={saveTeam}>Save your Team</button> : null }
         </div>
         
     );
